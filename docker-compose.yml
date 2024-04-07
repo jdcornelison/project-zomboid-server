@@ -9,8 +9,32 @@ services:
       SERVER_ADMIN_PASSWORD: "pzadmin"
       SERVER_PASSWORD: "secretpassword"
     ports:
-      - "16261:16261/udp"
-      - "16262:16262/udp"
+      - "16361:16361/udp"
+      - "16362:16362/udp"
     volumes:
       - ./data/server-file:/data/server-file
       - ./data/config:/data/config
+  project-zomboid-modded:
+    container_name: pzserver-modded
+    image: jdcornelison/project-zomboid-server
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: "pz-server-modded"
+      SERVER_PASSWORD: "moddedpassword"
+      SERVER_ADMIN_PASSWORD: "moddedadmin"
+      SERVER_PORT: "16361"
+      SERVER_UDP_PORT: "16362"
+      SERVER_PUBLIC: "false"
+      SERVER_PUBLIC_NAME: "Rat Gaming (Modded)"
+      SERVER_PUBLIC_DESC: "Rat Gaming Modded Server"
+      SERVER_MAX_PLAYER: "8"
+      MOD_NAMES: ""
+      MOD_WORKSHOP_IDS: ""
+      RCON_PORT: "27016"
+      RCON_PASSWORD: "rconpassword"
+    ports:
+      - "16361:16361/udp"
+      - "16362:16362/udp"
+    volumes:
+      - ./data/server-file-modded:/data/server-file-modded
+      - ./data/config-modded:/data/config-modded
