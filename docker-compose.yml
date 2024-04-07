@@ -16,7 +16,7 @@ services:
   #     - ./data/config:/data/config
   project-zomboid-modded:
     container_name: pzserver-modded
-    image: jdcornelison/project-zomboid-server
+    image: pepecitron/projectzomboid-server
     restart: unless-stopped
     environment:
       SERVER_NAME: "pz-server-modded"
